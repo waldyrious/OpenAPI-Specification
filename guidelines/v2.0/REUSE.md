@@ -15,24 +15,22 @@ The following types are reusable, as defined by the spec:
 
 When authoring API design documents, common object definitions can be utilized to avoid duplication. For example, imagine multiple path definitions that each share a common path parameter, or a common response structure. The OpenAPI specification allows reuse of common object definitions through the use of "references".
 
-A reference is a construct in your API design document that indicates "the content for this portion of the document is defined elsewhere". To create a reference, at the location in your document where you want to reuse some other definition, create an object that has a `$ref` property whose value is a URI pointing to where the definition is (more on this in later sections). 
+A reference is a construct in your API design document that indicates "the content for this portion of the document is defined elsewhere". To create a reference, at the location in your document where you want to reuse some other definition, create an object that has a `$ref` property whose value is a URI pointing to where the definition is (more on this in later sections).
 
-OpenAPI's provides reference capabilities using the [JSON Reference](https://tools.ietf.org/html/draft-pbryan-zyp-json-ref-03) specification. 
+OpenAPI provides reference capabilities using the [JSON Reference](https://tools.ietf.org/html/draft-pbryan-zyp-json-ref-03) specification.
 
 ### JSON Example
 
 ``` js
-{
-  // ... 
-  definitions: {
-    Person: {
-      type: 'object',
-      properties: {
-        friends: {
-          type: 'array',
-          items: {
-            $ref: '#/definitions/Person'
-          }
+// ...
+definitions: {
+  Person: {
+    type: 'object',
+    properties: {
+      friends: {
+        type: 'array',
+        items: {
+          $ref: '#/definitions/Person'
         }
       }
     }
@@ -82,61 +80,63 @@ When referencing locally (within the current document), the target references sh
 An example of a local definition reference:
 
 _Example from https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v2.0/json/petstore.json_
+
 ``` json
-          // ... 
-          "200": {
-            "description": "pet response",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Pet"
-              }
-            }
+// ...
+"200": {
+  "description": "pet response",
+  "schema": {
+    "type": "array",
+    "items": {
+      "$ref": "#/definitions/Pet"
+    }
+  }
 ```
 
 #### Remote references
 
 ##### Relative path
 
-Files can be referred to in relative paths to the current document. 
+Files can be referred to in relative paths to the current document.
 
 _Example from https://github.com/OAI/OpenAPI-Specification/tree/master/examples/v2.0/json/petstore-separate/spec/swagger.json_
 
 ``` json
-// ... 
+// ...
 "responses": {
-	"default": {
-		"description": "unexpected error",
-		"schema": {
-			"$ref": "../common/Error.json"
-		}
-	}
+  "default": {
+    "description": "unexpected error",
+    "schema": {
+      "$ref": "../common/Error.json"
+    }
+  }
 }
 ```
 
 Remote references may also reference properties within the relative remote file.
 
 _Example from https://github.com/OAI/OpenAPI-Specification/tree/master/examples/v2.0/json/petstore-separate/spec/swagger.json_
+
 ``` json
-// ... 
+// ...
 "parameters": [
-	{
-		"$ref": "parameters.json#/tagsParam"
-	},
-	{
-		"$ref": "parameters.json#/limitsParam"
-	}
+  {
+    "$ref": "parameters.json#/tagsParam"
+  },
+  {
+    "$ref": "parameters.json#/limitsParam"
+  }
 ]
 ```
 
-
 ##### URL
 
-Remote files can be hosted on an HTTP server (rather than the local file system). 
+Remote files can be hosted on an HTTP server (rather than the local file system).
 
 One risk of this approach is that environment specific issues could arise if DNS is not taken into account (as the reference can only contain one hostname).
 
 _Assuming file https://my.company.com/definitions/Model.json_
+
 ```json
 {
   "description": "A simple model",
@@ -157,6 +157,7 @@ _Assuming file https://my.company.com/definitions/Model.json_
 Remote references may also reference properties within the remote file.
 
 _Assuming file https://my.company.com/definitions/models.json_
+
 ```json
 {
   "models": {
@@ -187,17 +188,15 @@ _Assuming file https://my.company.com/definitions/models.json_
 }
 ```
 
-
 ### Definitions
 
 Reuse schema definitions by creating a repository of definitions.  This is done by simply hosting a file or set of files for commonly used definitions across a company or organization.
 
 Refer to [Guidelines for Referencing](#guidelines-for-referencing) for referencing strategies.
 
-
 ### Parameters
 
-Similar to model schemas, you can create a repository of `parameters` to describe the common entities that appear throughout a set of systems.  
+Similar to model schemas, you can create a repository of `parameters` to describe the common entities that appear throughout a set of systems.
 
 Refer to [Guidelines for Referencing](#guidelines-for-referencing) for referencing strategies.
 
@@ -333,6 +332,7 @@ Assume the file `responses.json`:
 ```
 
 You can refer to it from a response definition:
+
 ```json
 {
   "/pets/{petId}": {

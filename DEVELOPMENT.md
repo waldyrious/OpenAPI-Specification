@@ -1,4 +1,4 @@
-## Development Guidelines
+# Development Guidelines
 
 This document intends to establish guidelines which build a transparent, open mechanism for deciding how to evolve the OpenAPI Specification. The OpenAPI Technical Steering Committee (TSC) will initially follow these processes when merging changes from external contributors or from the TSC itself. This guideline document will be adjusted as practicality dictates.
 
@@ -30,7 +30,7 @@ For each change in the specification we should *always* consider the following:
 
 * Visualization. Can the specification change be graphically visualized somehow in a UI or other interface?
 
-Spec changes should be approved by a majority of the committers. Approval can be given by commenting on the issue itself, for example, "Approved by @webron" however at least one formal GitHub-based  flow approval must be given. After voting criteria is met, any committer can merge the PR. No change should be approved until there is documentation for it, supplied in an accompanying PR. 
+Spec changes should be approved by a majority of the committers. Approval can be given by commenting on the issue itself, for example, "Approved by @webron" however at least one formal GitHub-based  flow approval must be given. After voting criteria is met, any committer can merge the PR. No change should be approved until there is documentation for it, supplied in an accompanying PR.
 
 ## Tracking Process
 
@@ -109,10 +109,10 @@ While governance of the specification is the role of the TSC, the evolution of t
 
 While these developer community roles are informal, there are many ways to get involved with the OpenAPI community, such as:
 
-* Contributor: Includes but is not limited to any [contributor to the specification](https://github.com/OAI/OpenAPI-Specification/graphs/contributors) via an accepted pull request or who participates in issues or TSC calls.
+* **Contributor**: Includes but is not limited to any [contributor to the specification](https://github.com/OAI/OpenAPI-Specification/graphs/contributors) via an accepted pull request or who participates in issues or TSC calls.
 
-* Implementer: any person involved in the creation or maintenance of tooling that leverages the current OpenAPI Specification
+* **Implementer**: any person involved in the creation or maintenance of tooling that leverages the current OpenAPI Specification
 
-* Ambassador: represents the OpenAPI Specification to the developer community. This could be through talks at conferences or meetups, blog posts, or answering questions in places like Twitter, Stack Overflow, or the GitHub repo.
+* **Ambassador**: represents the OpenAPI Specification to the developer community. This could be through talks at conferences or meetups, blog posts, or answering questions in places like Twitter, Stack Overflow, or the GitHub repo.
 
-* Supporter: uses the specification and appreciates its value. 
+* **Supporter**: uses the specification and appreciates its value.

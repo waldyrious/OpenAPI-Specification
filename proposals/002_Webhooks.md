@@ -1,25 +1,24 @@
 # Webhooks
 
-
 ## Metadata
 
-|Tag |Value |
-|---- | ---------------- |
-|Proposal |[002_Webhooks](https://github.com/OAI/OpenAPI-Specification/tree/master/proposals/002_webhooks.md)|
-|Authors|[Lorna Mitchell](https://github.com/lornajane)|
-|Review Manager |TBD |
-|Status |Proposal|
-|Issues |[#1968](https://github.com/OAI/OpenAPI-Specification/issues/1968)|
+| Tag | Value |
+| --- | ----- |
+| Proposal | [002_Webhooks](https://github.com/OAI/OpenAPI-Specification/tree/master/proposals/002_webhooks.md) |
+| Authors | [Lorna Mitchell](https://github.com/lornajane) |
+| Review Manager | TBD |
+| Status | Proposal |
+| Issues | [#1968](https://github.com/OAI/OpenAPI-Specification/issues/1968) |
 
 ## Change Log
 
-|Date |Responsible Party |Description |
-|---- | ---------------- | ---------- |
+| Date | Responsible Party | Description |
+| ---- | ----------------- | ----------- |
 | 17th July 2019 | Lorna Mitchell | Initial draft |
 
 ## Introduction
 
-Modern APIs often consist of two-way API traffic, but OpenAPI currently only supports some types of requests. Standard client-to-server API calls are well supported. Server-to-client callbacks are only supported if they are the result of an earlier API call and are documented by nesting under the path of that earlier call. Incoming HTTP reqests ("webhooks") cannot be described in the current version of OpenAPI if they are the result of subscription arranged outside of the scope of the API (e.g. by setting a callback URL in a web interface).
+Modern APIs often consist of two-way API traffic, but OpenAPI currently only supports some types of requests. Standard client-to-server API calls are well supported. Server-to-client callbacks are only supported if they are the result of an earlier API call and are documented by nesting under the path of that earlier call. Incoming HTTP requests ("webhooks") cannot be described in the current version of OpenAPI if they are the result of subscription arranged outside of the scope of the API (e.g. by setting a callback URL in a web interface).
 
 ## Motivation
 
@@ -31,7 +30,7 @@ For example: at Nexmo we have an SMS API (the docs are here: <https://developer.
 * receiving a delivery receipt when you just sent an SMS (callback, currently supported)
 * receiving an incoming SMS (webhook, not currently supported)
 
-The docs have an `x-webhooks` top-level element (we use [our own docs renderer](https://github.com/Nexmo/nexmo-oas-renderer)) and then a meaningless URL fieldname before the path item object that descrives the webhook.
+The docs have an `x-webhooks` top-level element (we use [our own docs renderer](https://github.com/Nexmo/nexmo-oas-renderer)) and then a meaningless URL field name before the path item object that describes the webhook.
 
 On one of the other Nexmo APIs, we simply documented our webhooks in a markdown file separate from our API even though the two directions are very closely linked (see [Voice API webhook reference](https://developer.nexmo.com/voice/voice-api/webhook-reference) ).
 
@@ -45,7 +44,7 @@ This solution builds on the existing proven approach for callbacks, but detaches
 
 To borrow the Nexmo SMS API example from above (because it's simple, I can add more examples as needed), the spec for the incoming webhook that occurs because a message has arrived might look like this:
 
-```
+```yaml
 webhooks:
   inbound-sms:
     post:
@@ -114,7 +113,7 @@ webhooks:
 
 **Existing Spec:**
 
-```
+```markdown
 #### <a name="oasObject"></a>OpenAPI Object
 
 This is the root document object of the [OpenAPI document](#oasDocument).
@@ -137,7 +136,7 @@ This object MAY be extended with [Specification Extensions](#specificationExtens
 
 **Change: Add to the end of the table**
 
-```
+```markdown
 <a name="oasWebhooks"></a>webhooks | [[Webhooks Object](#webhooksObject)] | The incoming webhooks that may be received as part of this API.
 ```
 
@@ -145,7 +144,7 @@ This object MAY be extended with [Specification Extensions](#specificationExtens
 
 (new spec section)
 
-```
+```markdown
 #### <a name="webhooksObject"></a>Webhooks Object
 
 A map of webhooks that may be received as incoming HTTP requests as part of the API. The key of the map is a unique short name for the webhook e.g. `messageEvent`. Each value in the map is a [Path Item Object](#pathItemObject) that describes a set of requests that may be initiated by the API provider and the expected responses.
@@ -161,7 +160,7 @@ webhooks:
   statusUpdate:
     requestBody:
       description: Status updates on an item. You can set the URL for these updates in your example.com dashboard.
-      content: 
+      content:
         'application/json':
           schema:
               type: object
@@ -180,7 +179,6 @@ webhooks:
     responses:
       '200':
         description: webhook successfully processed and no retries will be performed
-
 ```
 
 ## Backwards compatibility
@@ -189,4 +187,4 @@ Adding a new top-level entry is not something to take lightly, however hopefully
 
 ## Alternatives considered
 
-Another option is to add a special `path` that could contain the various webhooks using the exisiting `callback` syntax but existing tools which aren't expecting this special value may not handle it well, so this option was discounted.
+Another option is to add a special `path` that could contain the various webhooks using the existing `callback` syntax but existing tools which aren't expecting this special value may not handle it well, so this option was discounted.

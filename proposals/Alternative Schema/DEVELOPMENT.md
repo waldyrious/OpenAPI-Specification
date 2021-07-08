@@ -1,4 +1,4 @@
-## Development Guidelines
+# Development Guidelines
 
 TBD
 
@@ -18,21 +18,14 @@ TBD
 
 * GitHub is the medium of record for all spec designs, use cases, and so on.
 
-
 ## Release Process
 
 TBD
 
 ## Draft Features
 
-
 ## Transparency
-
-
 
 ## Participation
 
-
-
 ## Community Roles
-

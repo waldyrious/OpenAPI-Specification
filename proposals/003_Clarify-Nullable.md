@@ -1,23 +1,22 @@
 # Clarify Semantics of `nullable` in OpenAPI 3.0
 
-
 ## Metadata
 
-|Tag |Value |
-|---- | ---------------- |
-|Proposal |[003](https://github.com/OAI/OpenAPI-Specification/tree/master/proposals/003_Clarify-Nullable.md)|
-|Authors|[Ted Epstein](https://github.com/tedepstein)|
-|Review Manager |TBD|
-|Status |Proposal|
-|Implementations |N/A|
-|Issues | [1900](https://github.com/OAI/OpenAPI-Specification/issues/1900), [1368](https://github.com/OAI/OpenAPI-Specification/issues/1368), [1389](https://github.com/OAI/OpenAPI-Specification/issues/1389), [1957](https://github.com/OAI/OpenAPI-Specification/pull/1957), [2046](https://github.com/OAI/OpenAPI-Specification/pull/2046), [1977](https://github.com/OAI/OpenAPI-Specification/pull/1977#issuecomment-533333957), [2057](https://github.com/OAI/OpenAPI-Specification/issues/2057)|
-|Previous Revisions |N/A |
+| Tag | Value |
+| --- | ----- |
+| Proposal | [003](https://github.com/OAI/OpenAPI-Specification/tree/master/proposals/003_Clarify-Nullable.md) |
+| Authors | [Ted Epstein](https://github.com/tedepstein) |
+| Review Manager | TBD |
+| Status | Proposal |
+| Implementations | N/A |
+| Issues | [1900](https://github.com/OAI/OpenAPI-Specification/issues/1900), [1368](https://github.com/OAI/OpenAPI-Specification/issues/1368), [1389](https://github.com/OAI/OpenAPI-Specification/issues/1389), [1957](https://github.com/OAI/OpenAPI-Specification/pull/1957), [2046](https://github.com/OAI/OpenAPI-Specification/pull/2046), [1977](https://github.com/OAI/OpenAPI-Specification/pull/1977#issuecomment-533333957), [2057](https://github.com/OAI/OpenAPI-Specification/issues/2057) |
+| Previous Revisions | N/A |
 
 ## Change Log
 
-|Date |Responsible Party |Description |
-|---- | ---------------- |------------|
-|Oct 31, 2019 | Ted Epstein | Initial proposal |
+| Date | Responsible Party | Description |
+| ---- | ----------------- | ----------- |
+| Oct 31, 2019 | Ted Epstein | Initial proposal |
 
 ## Introduction
 
@@ -128,7 +127,7 @@ So the 3.0 spec is ambiguous about null values. It's not clear whether the spec 
 
 ### Specific Questions
 
-Questions that are not answered by the current specification include the following: 
+Questions that are not answered by the current specification include the following:
 
 * If a schema specifies `nullable: true` and `enum: [1, 2, 3]`, does that schema allow null values? (See [#1900](https://github.com/OAI/OpenAPI-Specification/issues/1900).)
 
@@ -178,7 +177,7 @@ Following are answers to the questions posed above, assuming the proposed clarif
 
 #### If a schema specifies `nullable: true` and `enum: [1, 2, 3]`, does that schema allow null values? (See [#1900](https://github.com/OAI/OpenAPI-Specification/issues/1900).)
 
-No. The `nullable: true` assertion folds into the `type` assertion, which presumably specifies `integer` or `number`. 
+No. The `nullable: true` assertion folds into the `type` assertion, which presumably specifies `integer` or `number`.
 
 While the modified `type` now allows `null`, the `enum` does not. Consistent with JSON schema, a value conforms to the schema only if it is valid against _all_ constraints. Any constraint, in this case `enum`, can cause a value to fail validation, even if that value meets all of the other constraints.
 
@@ -192,7 +191,7 @@ No. Subtypes can add constraints, but not relax them.
 
 #### Can `allOf` be used to define a non-nullable subtype of a nullable base schema?
 
-Yes. The subtype can specify a `type` without `nullable: true`, or can specify `not: {enum: [null]}`. 
+Yes. The subtype can specify a `type` without `nullable: true`, or can specify `not: {enum: [null]}`.
 
 #### What is the correct translation of a nullable schema from OpenAPI into an equivalent JSON Schema?
 
@@ -206,9 +205,9 @@ Yes. For example, a Schema Object with `"type" : "string", "nullable" : true` wo
 
 ## Backwards compatibility
 
-Spec revisions through 3.0.2 are ambiguous as described above, so any possible clarification has the potential to break existing implementations. 
+Spec revisions through 3.0.2 are ambiguous as described above, so any possible clarification has the potential to break existing implementations.
 
-With the clarification of `nullable: false`, we think the risk of actual breakage is miniscule, because the current ambiguity only affects untyped Schema Objects, which by their nature leave a lot of room for unexpected values. Any implementation that relies on schema validation to prevent null values should use explicitly typed schemas, and typed schemas unambiguously disallow `null` unless `nullable` is `true`.
+With the clarification of `nullable: false`, we think the risk of actual breakage is minuscule, because the current ambiguity only affects untyped Schema Objects, which by their nature leave a lot of room for unexpected values. Any implementation that relies on schema validation to prevent null values should use explicitly typed schemas, and typed schemas unambiguously disallow `null` unless `nullable` is `true`.
 
 There might be a somewhat greater risk of breakage by specifying the effect of `nullable: true` as a `type` modifier. A more heavy-handed interpretation of `nullable: true`, [described here](https://github.com/OAI/OpenAPI-Specification/issues/1900#issuecomment-486772917), would make it equivalent to `anyOf [s, {type: "null"}]` where `s` is the schema as specified (excluding `nullable`). This would allow nulls even where they would be prohibited by other schema keywords, like `enum`. But this interpretation introduces far greater complexity than the narrowly scoped `type` modifier. We are not aware of any OpenAPI schema validator that actually attempts this, and there is nothing in the OpenAPI spec that says `nullable` can override constraining assertions.
 

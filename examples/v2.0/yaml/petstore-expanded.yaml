@@ -122,12 +122,12 @@ definitions:
   NewPet:
     type: "object"
     required:
-      - name  
+      - name
     properties:
       name:
         type: string
       tag:
-        type: string    
+        type: string
 
   Error:
     type: "object"

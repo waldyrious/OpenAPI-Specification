@@ -2,19 +2,19 @@
 
 ## Metadata
 
-|Tag |Value |
-|---- | ---------------- |
-|Proposal |[004_Overlays](https://github.com/OAI/OpenAPI-Specification/tree/master/proposals/004_overlays.md)|
-|Authors|[Darrel Miller](https://github.com/darrelmiller)|
-|Status |Proposal|
-|Issues |[1442](https://github.com/OAI/OpenAPI-Specification/issues/1442) [1722](https://github.com/OAI/OpenAPI-Specification/issues/1722)|
+| Tag | Value |
+| --- | ----- |
+| Proposal | [004_Overlays](https://github.com/OAI/OpenAPI-Specification/tree/master/proposals/004_overlays.md) |
+| Authors | [Darrel Miller](https://github.com/darrelmiller) |
+| Status | Proposal |
+| Issues | [1442](https://github.com/OAI/OpenAPI-Specification/issues/1442) [1722](https://github.com/OAI/OpenAPI-Specification/issues/1722) |
 
 ## Change Log
 
-|Date |Responsible Party |Description |
-|---- | ---------------- | ---------- |
+| Date | Responsible Party | Description |
+| ---- | ----------------- | ----------- |
 | 24th December 2019 | Darrel Miller | Initial draft |
-| 2nd January 2019 | Darrel Miller | Update to wording around removing items from arrays.  Added section on backward compatibility. Clarified process around applying a set of updates. Started to add supported scenarios.|
+| 2nd January 2019 | Darrel Miller | Update to wording around removing items from arrays.  Added section on backward compatibility. Clarified process around applying a set of updates. Started to add supported scenarios. |
 
 ## Introduction
 
@@ -34,9 +34,9 @@ This is the root object of the [OpenAPI Overlay document](#oasDocument).
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="overlayVersion"></a>overlay | `string` | Version of the Overlay specification that this document conforms to. 
+<a name="overlayVersion"></a>overlay | `string` | Version of the Overlay specification that this document conforms to.
 <a name="overlayInfo"></a>info | [[Info Object](#overlayInfoObject)] | Identifying information about the overlay.
-<a name="overlayExtends"></a>extends | `url` | URL to an OpenAPI document this overlay applies to. 
+<a name="overlayExtends"></a>extends | `url` | URL to an OpenAPI document this overlay applies to.
 <a name="overlayUpdates"></a>updates | [[Update Object](#updateObject)] | A list of update objects to be applied to the target document.
 
 The list of update objects MUST be applied in sequential order to ensure a consistent outcome.  Updates are applied to the result of the previous updates. This enables objects to be deleted in one update and then re-created in a subsequent update.
@@ -51,8 +51,8 @@ This object contains identifying information about the [OpenAPI Overlay document
 
 Field Name | Type | Description
 ---|:---:|---
-<a name="overlayTitle"></a>title | `string` | A human readable description of the purpose of the overlay.
-<a name="overlayVersion"></a>version | `string` | A version identifer for indicating changes to an overlay document.
+<a name="overlayTitle"></a>title | `string` | A human-readable description of the purpose of the overlay.
+<a name="overlayVersion"></a>version | `string` | A version identifier for indicating changes to an overlay document.
 
 #### <a name="updateObject"></a>Update Object
 
@@ -64,7 +64,7 @@ Field Name | Type | Description
 ---|:---:|---
 <a name="updateTarget"></a>target | `string` | A JMESPath expression referencing the target objects in the target document.
 <a name="updateValue"></a>value | [Any](#valueObject) | An object with the properties and values to be updated in the target document.  Property has no impact if `remove` property is `true`.
-<a name="updateRemove"></a>remove | `boolean` | A boolean value that indicates that the target object is to be removed from the the map or array it is contained in. The default value is false.  
+<a name="updateRemove"></a>remove | `boolean` | A boolean value that indicates that the target object is to be removed from the the map or array it is contained in. The default value is false.
 
 The properties of the `Value Object` MUST be compatible with the target object referenced by the JMESPath key.  When the Overlay document is applied, the properties in the `Value Object` replace properties in the target object with the same name and new properties are appended to the target object.
 
@@ -149,7 +149,7 @@ info:
   version: 1.0.0
 updates:
 - target: paths.*.get.parameters[length(@)]
-  value: 
+  value:
     name: newParam
     in: query
 ```

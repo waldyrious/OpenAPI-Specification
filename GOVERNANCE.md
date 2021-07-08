@@ -12,7 +12,7 @@ Roles:
 
 * [Liaison](https://www.merriam-webster.com/dictionary/liaison) — Elected by TSC members in a plurality vote (oral count). Liaison represents the TSC to the OAI's Business Governing Board (BGB) at board meetings (though this itself does not confer voting rights) and is the public facing mouthpiece of the TSC.
 
-* [Maintainer](https://www.merriam-webster.com/dictionary/maintainer) — all and only members of the TSC are maintainers, and are responsible for approving proposed changes to the specification. If membership drops below 3, work is suspended until the BGB can re-establish the minimum. To maintain agility, the TSC should be capped at a maximum 9 members, though that number can be reconsidered by the TSC in the future. Past members will be noted as emeritus status once they are no longer members. 
+* [Maintainer](https://www.merriam-webster.com/dictionary/maintainer) — all and only members of the TSC are maintainers, and are responsible for approving proposed changes to the specification. If membership drops below 3, work is suspended until the BGB can re-establish the minimum. To maintain agility, the TSC should be capped at a maximum 9 members, though that number can be reconsidered by the TSC in the future. Past members will be noted as emeritus status once they are no longer members.
 
 * [Rick](https://www.youtube.com/watch?v=dQw4w9WgXcQ) — Responsible for not giving up or letting down. Requires plurality vote of TSC members.
 

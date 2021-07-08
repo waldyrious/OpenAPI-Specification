@@ -20,7 +20,7 @@ paths:
         '200':
           description: A paged array of pets
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Pets"
 

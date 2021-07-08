@@ -1,8 +1,8 @@
-## Change: Add Alternative Schema Examples
+# Change: Add Alternative Schema Examples
 
 The following text is to be inserted after the Alternative Schema Object section.
 
-### Alternative Schema Examples
+## Alternative Schema Examples
 
 Minimalist usage of alternative schema:
 
@@ -50,4 +50,3 @@ Mixed OAS schema and alternative schema:
             x-oas-draft-alternativeSchema:
                 type: jsonSchema
                 location: ./real-jsonschema.json
-

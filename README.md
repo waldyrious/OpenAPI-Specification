@@ -2,8 +2,7 @@
 
 ![Build Status](https://github.com/OAI/OpenAPI-Specification/workflows/validate-markdown/badge.svg)
 
-![](https://avatars3.githubusercontent.com/u/16343502?v=3&s=200)
-
+![OpenAPI logo](https://avatars3.githubusercontent.com/u/16343502?v=3&s=200)
 
 The OpenAPI Specification is a community-driven open specification within the [OpenAPI Initiative](https://www.openapis.org/), a Linux Foundation Collaborative Project.
 
@@ -40,9 +39,7 @@ Looking to see how you can create your own OpenAPI definition, present it, or ot
 
 ## Participation
 
-The current process for development of the OpenAPI Specification is described in 
-[Development Guidelines](DEVELOPMENT.md).
-Development of the next version of the OpenAPI Specification is guided by the [Technical Steering Committee (TSC)](https://www.openapis.org/participate/how-to-contribute/governance#TDC). This group of committers bring their API expertise, incorporate feedback from the community, and expand the group of committers as appropriate. All development activity on the future specification will be performed as features and merged into this branch. Upon release of the future specification, this branch will be merged to master.
+The current process for development of the OpenAPI Specification is described in [Development Guidelines](DEVELOPMENT.md). Development of the next version of the OpenAPI Specification is guided by the [Technical Steering Committee (TSC)](https://www.openapis.org/participate/how-to-contribute/governance#TDC). This group of committers bring their API expertise, incorporate feedback from the community, and expand the group of committers as appropriate. All development activity on the future specification will be performed as features and merged into this branch. Upon release of the future specification, this branch will be merged to master.
 
 The TSC holds weekly web conferences to review open pull requests and discuss open issues related to the evolving OpenAPI Specification. Participation in weekly calls and scheduled working sessions is open to the community. You can view the [TSC calendar online](https://openapi.groups.io/g/tsc/calendar), and import it to your calendar using the [iCal link](https://openapi.groups.io/g/tsc/ics/1105671/1995679554/feed.ics).
 
